@@ -38,14 +38,14 @@ app.post('/', function(req, res){
   var optionsETA = {
     url : 'https://api.lyft.com/v1/eta?lat=' + lat + '&lng=' + lng,
   headers: {
-    'Authorization': 'gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
+    'Authorization': 'bearer gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
   }
   }
 
   var optionsCOST = {
     url : 'https://api.lyft.com/v1/cost?start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_lng,
     headers: {
-      'Authorization': 'gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
+      'Authorization': 'bearer gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
     }
   }
 
