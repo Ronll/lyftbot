@@ -25,7 +25,7 @@ app.post('/', function(req, res){
   res.end();  
   //remove lyft prefix
   var phoneNumber = req.body.From;
-  var myPhoneNumber = res.body.To;
+  var myPhoneNumber = req.body.To;
   var message = req.body.Body.slice(5);
   var passangesrs = req.body.Body.slice(0,1);
   var possibleRides = [];
