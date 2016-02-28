@@ -28,7 +28,7 @@ app.post('/', function(req, res){
   var phoneNumber = req.body.From;
   var myPhoneNumber = req.body.To;
   var message = req.body.Body.slice(5);
-  var passangesrs = req.body.Body.slice(0,1);
+  var passangers = req.body.Body.slice(0,1);
   var possibleRides = [];
   var costEstimates;
   var etaEstimates;
