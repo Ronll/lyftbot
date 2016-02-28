@@ -50,7 +50,7 @@ app.post('/', function(req, res){
   }
   }
 
-  request(options, function (error, response, body) {
+  request(optionsETA, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       etaEstimates = body.eta_estimates; 
       for( var i = 0; i < etaEstimates.length ; i++){
