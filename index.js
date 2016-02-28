@@ -71,8 +71,6 @@ app.post('/', function(req, res){
 	costEstimates.sort(function(a,b){
 	  return a.cost_secounds - b.cost_secounds 
 	})
-      })
-    }
 
   var bestCost = costEstimates[0]; 
   var bestETA = possibleRides[0];
@@ -85,6 +83,8 @@ app.post('/', function(req, res){
   }, function(err, message) {
         process.stdout.write(message.sid);
   });
+      })
+    }
   })
 
 
