@@ -63,6 +63,7 @@ app.post('/', function(req, res){
 	return a.eta_estimates - b.eta_estimates
       })
       request(optionsCOST, function(error, response, body){
+	if(error) console.log(error);
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
           rides[costEstimates[y].ride_type].costMin = costEstimates.estimated_cost_cents_min
