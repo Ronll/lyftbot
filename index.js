@@ -45,9 +45,9 @@ app.post('/', function(req, res){
 
   var optionsCOST = {
     url : 'https://api.lyft.com/v1/cost?start_lat=' + lat + '&start_lng=' + lng + '&end_lat=' + end_lat + '&end_lng=' + end_lng,
-  headers: {
-    'Authorization': 'gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
-  }
+    headers: {
+      'Authorization': 'gAAAAABW0zi87zqNYjxE0bXiiSr1oVoavFeq-xv2eQ4lrVIIaKJKEtrZlTPlD9_m90hREB_wEHT_CBPO90qWS1Kp5PWuohJWk11Cnk91Qwsa1UjlaawgOx3zknfY4KDeCdpuNsCwYO_U_aKqMB83UEdW4aghZJ3EGqSyLFmf2E1mSrJGsoTZVDNe4lZalKhHQuE5RzkEQZO72y8l5Jrwh4VgkyKao2U1PQ=='
+    }
   }
 
   request(optionsETA, function (error, response, body) {
@@ -59,32 +59,35 @@ app.post('/', function(req, res){
 	  rides[etaEstimates[i].ride_type].eta = etaEstimates.eta_secounds / 60;
 	}
       }  
+      console.log('out of loop 1');
       possibleRides.sort(function(a,b){
 	return a.eta_estimates - b.eta_estimates
       })
       request(optionsCOST, function(error, response, body){
+	console.log('in request 2');
 	if(error) console.log(error);
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
-          rides[costEstimates[y].ride_type].costMin = costEstimates.estimated_cost_cents_min
-          rides[costEstimates[y].ride_type].costMax = costEstimates.estimated_cost_cents_max
+	  rides[costEstimates[y].ride_type].costMin = costEstimates.estimated_cost_cents_min
+	rides[costEstimates[y].ride_type].costMax = costEstimates.estimated_cost_cents_max
 	}
+	console.log('out of loop 2');
 	costEstimates.sort(function(a,b){
 	  return a.cost_secounds - b.cost_secounds 
 	})
 
-  var bestCost = costEstimates[0]; 
-  var bestETA = possibleRides[0];
-  var sms = "Best rate is " + bestCost.display_name + " for " + bestCost.estimated_cost_cents_min / 100 + '-' + bestCost.estimated_cost_cents_max / 100  + "$ in " + rides[bestCost.ride_type].eta + "minutes" + 
-            "Best Time is " + bestETA.display_name + " in " + rides[bestETA.ride_type].eta + " minutes for " + rides[bestETA.ride_type].costMin / 100 + '-' + rides[bestETA.ride_type].costMax / 100 + '$' 
-  console.log(sms);
-  client.messages.create({
-       body: sms,
-      to: phoneNumber,
-      from: myPhoneNumber
-  }, function(err, message) {
-        process.stdout.write(message.sid);
-  });
+	var bestCost = costEstimates[0]; 
+	var bestETA = possibleRides[0];
+	var sms = "Best rate is " + bestCost.display_name + " for " + bestCost.estimated_cost_cents_min / 100 + '-' + bestCost.estimated_cost_cents_max / 100  + "$ in " + rides[bestCost.ride_type].eta + "minutes" + 
+	"Best Time is " + bestETA.display_name + " in " + rides[bestETA.ride_type].eta + " minutes for " + rides[bestETA.ride_type].costMin / 100 + '-' + rides[bestETA.ride_type].costMax / 100 + '$' 
+	console.log(sms);
+      client.messages.create({
+	body: sms,
+	to: phoneNumber,
+	from: myPhoneNumber
+      }, function(err, message) {
+	process.stdout.write(message.sid);
+      });
       })
     }
   })
