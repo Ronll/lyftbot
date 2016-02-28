@@ -70,6 +70,7 @@ app.post('/', function(req, res){
 	if(error) console.log(error);
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
+	  console.log('coste y', costEstimates);
 	  rides[costEstimates[y].ride_type].costMin = costEstimates.estimated_cost_cents_min
 	rides[costEstimates[y].ride_type].costMax = costEstimates.estimated_cost_cents_max
 	}
