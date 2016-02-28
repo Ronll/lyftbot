@@ -76,6 +76,7 @@ app.post('/', function(req, res){
   var bestETA = possibleRides[0];
   var sms = "Best rate is " + bestCost.display_name + " for " + bestCost.estimated_cost_cents_min / 100 + '-' + bestCost.estimated_cost_cents_max / 100  + "$ in " + rides[bestCost.ride_type].eta + "minutes" + 
             "Best Time is " + bestETA.display_name + " in " + rides[bestETA.ride_type].eta + " minutes for " + rides[bestETA.ride_type].costMin / 100 + '-' + rides[bestETA.ride_type].costMax / 100 + '$' 
+  console.log(sms);
   client.messages.create({
        body: sms,
       to: phoneNumber,
