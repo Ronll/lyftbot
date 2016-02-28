@@ -50,6 +50,7 @@ app.post('/', function(req, res){
   }
 
   request(optionsETA, function (error, response, body) {
+      var body = JSON.parse(body);
       console.log(error, 'out of loop 1');
       etaEstimates = body.eta_estimates; 
       for( var i = 0; i < etaEstimates.length ; i++){
@@ -63,6 +64,7 @@ app.post('/', function(req, res){
 	return a.eta_estimates - b.eta_estimates
       })
       request(optionsCOST, function(error, response, body){
+	body = JSON.parse(body);
 	console.log('in request 2');
 	if(error) console.log(error);
 	costEstimates = body.cost_estimates; 
