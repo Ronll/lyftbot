@@ -1,0 +1,23 @@
+{
+  "name": "lyftbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dataminatr/lyftbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dataminatr/lyftbot/issues"
+  },
+  "homepage": "https://github.com/Dataminatr/lyftbot#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "twilio": "^2.9.0"
+  }
+}
