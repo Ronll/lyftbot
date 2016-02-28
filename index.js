@@ -3,7 +3,7 @@ var request = require('request');
 
 var accountSid = 'AC6495fc21f3029512d474773e739cc64e';
 var authToken = "d6afadc2f571b20ac3cd7294faf274a9";
-var twilio = require('twilio')();
+var twilio = require('twilio')(accountSid, authToken);
 
 var bodyParser = require('body-parser');
 var app = express();
