@@ -50,7 +50,7 @@ app.post('/', function(req, res){
   }
 
   request(optionsETA, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+      console.log(error, 'out of loop 1');
       etaEstimates = body.eta_estimates; 
       for( var i = 0; i < etaEstimates.length ; i++){
 	if(rideSize[etaEstimates[i].ride_type] >= passangers){
@@ -86,12 +86,11 @@ app.post('/', function(req, res){
 	from: myPhoneNumber
       }, function(err, message) {
 	process.stdout.write(message.sid);
+	res.end();  
       });
       })
-    }
   })
 
-  res.end();  
 
 })
 
