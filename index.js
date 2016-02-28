@@ -51,8 +51,8 @@ app.post('/', function(req, res){
 
   request(optionsETA, function (error, response, body) {
       console.log(body, 'herererererr out of loop 1');
-      etaEstimates = body.eta_estimates; 
-      console.log(typeof etaEstimates)
+      etaEstimates = body.eta_estimates ;
+      console.log(typeof body.eta_estimates)
       for( var i = 0; i < etaEstimates.length ; i++){
 	if(rideSize[etaEstimates[i].ride_type] >= passangers){
 	  possibleRides.push(etaEstimates[i]);
