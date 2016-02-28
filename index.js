@@ -24,7 +24,6 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.post('/', function(req, res){
-  res.end();  
   //remove lyft prefix
   var phoneNumber = req.body.From;
   var myPhoneNumber = req.body.To;
@@ -92,6 +91,7 @@ app.post('/', function(req, res){
     }
   })
 
+  res.end();  
 
 })
 
