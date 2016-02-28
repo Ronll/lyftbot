@@ -59,7 +59,7 @@ app.post('/', function(req, res){
 	  rides[etaEstimates[i].ride_type].eta = etaEstimates.eta_secounds / 60;
 	}
       }  
-      possivleRides.sort(function(a,b){
+      possibleRides.sort(function(a,b){
 	return a.eta_estimates - b.eta_estimates
       })
       request(optionsCOST, function(error, response, body){
@@ -73,7 +73,6 @@ app.post('/', function(req, res){
 	})
       })
     }
-  })
 
   var bestCost = costEstimates[0]; 
   var bestETA = possibleRides[0];
@@ -86,6 +85,7 @@ app.post('/', function(req, res){
   }, function(err, message) {
         process.stdout.write(message.sid);
   });
+  })
 
 
 })
