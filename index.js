@@ -55,7 +55,7 @@ app.post('/', function(req, res){
       etaEstimates = body.eta_estimates ;
       console.log(typeof body)
       for( var i = 0; i < etaEstimates.length ; i++){
-	if(rideSize[etaEstimates[i].ride_type] >= passangers){
+	if(rideSize[etaEstimates[i].ride_type] <= passangers){
 	  possibleRides.push(etaEstimates[i]);
 	  rides[etaEstimates[i].ride_type].eta = etaEstimates.eta_secounds / 60;
 	}
