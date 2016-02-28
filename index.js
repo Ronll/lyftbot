@@ -16,7 +16,9 @@ var rideSize = {
 
 var port = process.env.PORT || 3000;
 var lat = 37.7833;
-var lng = 122.4167;
+var lng = -122.4167;
+var end_lat = 37.807413;
+var end_lng = -122.430445;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
