@@ -53,12 +53,11 @@ app.post('/', function(req, res){
       var body = JSON.parse(body);
       console.log(body, 'herererererr out of loop 1');
       etaEstimates = body.eta_estimates ;
-      console.log(typeof body)
       for( var i = 0; i < etaEstimates.length ; i++){
 	if(rideSize[etaEstimates[i].ride_type] <= passangers){
 	  possibleRides.push(etaEstimates[i]);
-	  rides[etaEstimates[i].ride_type].eta = etaEstimates[i].eta_secounds / 60;
 	}
+	  rides[etaEstimates[i].ride_type].eta = etaEstimates[i].eta_secounds / 60;
       }  
       console.log('out of loop 1');
       possibleRides.sort(function(a,b){
@@ -71,8 +70,6 @@ app.post('/', function(req, res){
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
 	  console.log('coste y', costEstimates);
-	 rides[costEstimates[y].ride_type]  ;
-	rides[costEstimates[y].ride_type] ;
 	 rides[costEstimates[y].ride_type].costMin = costEstimates[y].estimated_cost_cents_min
 	rides[costEstimates[y].ride_type].costMax = costEstimates[y].estimated_cost_cents_max
 	}
