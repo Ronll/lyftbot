@@ -81,6 +81,7 @@ app.post('/', function(req, res){
 	  return a.cost_secounds - b.cost_secounds 
 	})
 
+	console.log(costEstimates);
 	var bestCost = costEstimates[0]; 
 	var bestETA = possibleRides[0];
 	var sms = "Best rate is " + bestCost.display_name + " for " + bestCost.estimated_cost_cents_min / 100 + '-' + bestCost.estimated_cost_cents_max / 100  + "$ in " + rides[bestCost.ride_type].eta + "minutes" + 
