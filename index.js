@@ -7,6 +7,7 @@ var twilio = require('twilio')(accountSid, authToken);
 
 var bodyParser = require('body-parser');
 var app = express();
+  var rides = {}
 
 var rideSize = {
   "lyft_plus": 6,
@@ -32,7 +33,6 @@ app.post('/', function(req, res){
   var possibleRides = [];
   var costEstimates;
   var etaEstimates;
-  var rides = {}
 
 
   var optionsETA = {
