@@ -71,7 +71,9 @@ app.post('/', function(req, res){
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
 	  console.log('coste y', costEstimates);
-	  rides[costEstimates[y].ride_type].costMin = costEstimates[y].estimated_cost_cents_min
+	 rides[costEstimates[y].ride_type] = costMin;
+	rides[costEstimates[y].ride_type] = costMax;
+	 rides[costEstimates[y].ride_type].costMin = costEstimates[y].estimated_cost_cents_min
 	rides[costEstimates[y].ride_type].costMax = costEstimates[y].estimated_cost_cents_max
 	}
 	console.log('out of loop 2');
