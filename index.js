@@ -7,7 +7,6 @@ var twilio = require('twilio')(accountSid, authToken);
 
 var bodyParser = require('body-parser');
 var app = express();
-  var rides = {}
 
 var rideSize = {
   "lyft_plus": 6,
@@ -33,6 +32,7 @@ app.post('/', function(req, res){
   var possibleRides = [];
   var costEstimates;
   var etaEstimates;
+  var rides = {}
 
 
   var optionsETA = {
@@ -57,7 +57,7 @@ app.post('/', function(req, res){
       for( var i = 0; i < etaEstimates.length ; i++){
 	if(rideSize[etaEstimates[i].ride_type] <= passangers){
 	  possibleRides.push(etaEstimates[i]);
-	  rides[etaEstimates[i].ride_type].eta = etaEstimates.eta_secounds / 60;
+	  rides[etaEstimates[i].ride_type].eta = etaEstimates[i].eta_secounds / 60;
 	}
       }  
       console.log('out of loop 1');
@@ -71,8 +71,8 @@ app.post('/', function(req, res){
 	costEstimates = body.cost_estimates; 
 	for(var y = 0; y < costEstimates.length; y++){
 	  console.log('coste y', costEstimates);
-	  rides[costEstimates[y].ride_type].costMin = costEstimates.estimated_cost_cents_min
-	rides[costEstimates[y].ride_type].costMax = costEstimates.estimated_cost_cents_max
+	  rides[costEstimates[y].ride_type].costMin = costEstimates[y].estimated_cost_cents_min
+	rides[costEstimates[y].ride_type].costMax = costEstimates[y].estimated_cost_cents_max
 	}
 	console.log('out of loop 2');
 	costEstimates.sort(function(a,b){
